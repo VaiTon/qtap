@@ -33,6 +33,7 @@ import (
 	httpmetrics "github.com/qpoint-io/qtap/pkg/plugins/http"
 	"github.com/qpoint-io/qtap/pkg/plugins/httpcapture"
 	"github.com/qpoint-io/qtap/pkg/plugins/logger"
+	"github.com/qpoint-io/qtap/pkg/plugins/mirror"
 	"github.com/qpoint-io/qtap/pkg/plugins/report"
 	"github.com/qpoint-io/qtap/pkg/plugins/wrapper"
 	"github.com/qpoint-io/qtap/pkg/process"
@@ -69,6 +70,7 @@ var (
 		wrapper.Catch(accesslogs.NewConsoleHttpFilter()),
 		wrapper.Catch(&httpcapture.Factory{}),
 		wrapper.Catch(&httpmetrics.Factory{}),
+		wrapper.Catch(&mirror.Factory{}),
 
 		// Add more plugins here...
 	}

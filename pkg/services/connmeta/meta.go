@@ -17,6 +17,7 @@ type Service interface {
 	Direction() string
 	Protocol() string
 	Process() *process.Process
+	OpenEvent() *connection.OpenEvent
 }
 
 const (
@@ -76,4 +77,8 @@ func (s *service) Protocol() string {
 
 func (s *service) Process() *process.Process {
 	return s.conn.Process()
+}
+
+func (s *service) OpenEvent() *connection.OpenEvent {
+	return s.conn.OpenEvent
 }
