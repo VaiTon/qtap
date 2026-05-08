@@ -46,6 +46,26 @@ func (f *Factory) Init(logger *zap.Logger, config yaml.Node) {
 }
 
 func (f *Factory) NewHttpInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) plugins.HttpPluginInstance {
+	return f.newInstance(ctx, svcs)
+}
+
+func (f *Factory) NewGrpcInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) plugins.GrpcPluginInstance {
+	return f.newInstance(ctx, svcs)
+}
+
+func (f *Factory) NewRedisInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) plugins.RedisPluginInstance {
+	return f.newInstance(ctx, svcs)
+}
+
+func (f *Factory) NewMySQLInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) plugins.MySQLPluginInstance {
+	return f.newInstance(ctx, svcs)
+}
+
+func (f *Factory) NewKafkaInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) plugins.KafkaPluginInstance {
+	return f.newInstance(ctx, svcs)
+}
+
+func (f *Factory) newInstance(ctx plugins.PluginContext, svcs *services.ServiceRegistry) *mirrorInstance {
 	f.logger.Debug("new mirror plugin instance created")
 
 	var connSrv connmeta.Service
